@@ -9,6 +9,7 @@ public class ContatoBean implements Serializable {
 	private String email;
 	private String telefone;
 	
+	
 	public ContatoBean() {
 		
 	}
