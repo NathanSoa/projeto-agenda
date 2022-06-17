@@ -15,7 +15,7 @@ public class ConexaoBD {
 	private String user = "root";
 	private String password = "5432es";
 	
-	public Connection conectar() {
+	Connection conectar() {
 		Connection con = null;
 		
 		try {
