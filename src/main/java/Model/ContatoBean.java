@@ -1,12 +1,23 @@
 package Model;
 
-public class ContatoBean {
+import java.io.Serializable;
+
+public class ContatoBean implements Serializable {
 
 	private String codigo;
 	private String nome;
+	private String email;
+	private String telefone;
 	
 	public ContatoBean() {
 		
+	}
+	
+	public ContatoBean(String codigo, String nome, String email, String telefone) {
+		this.codigo = codigo;
+		this.email = email;
+		this.nome = nome;
+		this.telefone = telefone;
 	}
 	
 	public String getCodigo() {
@@ -32,8 +43,5 @@ public class ContatoBean {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-	private String email;
-	private String telefone;
-	
+	}	
 }
