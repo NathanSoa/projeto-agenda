@@ -31,6 +31,6 @@ public class Controller extends HttpServlet {
 	
 	protected void listarContatos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 			
-		response.sendRedirect("pages/agenda.jsp");
+		response.sendRedirect("jsp/agenda.jsp");
 	}
 }
