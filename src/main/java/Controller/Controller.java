@@ -6,14 +6,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import DAO.ConexaoBD;
 import Model.ContatoBean;
+import DAO.ImplContatoDAO;
 
 @WebServlet(urlPatterns = {"/Controller", "/main", "/insertBD"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	ContatoBean contato = new ContatoBean();
+	ImplContatoDAO contatoDAO = new ImplContatoDAO();
 	
     public Controller() {
         super();
@@ -45,5 +46,9 @@ public class Controller extends HttpServlet {
 		contato.setNome(request.getParameter("nome"));
 		contato.setTelefone(request.getParameter("telefone"));
 		contato.setEmail(request.getParameter("email"));
+		
+		contatoDAO.insereContato(contato);
+		
+		response.sendRedirect("main");
 	}
 }
