@@ -38,3 +38,23 @@ h1{
 #caixaTelefone{
 	width: 190px;
 }
+
+#tabelaContatos{
+	margin-top: 30px;
+	background-color: #e3e3e3;
+	
+}
+
+#tabelaContatos th {
+	border: 0px;
+	padding: 10px;
+	text-align: left;
+	background-color: #e6bb73;
+	color: white;
+}
+
+#tabelaContatos td {
+	border: 0px;
+	padding: 10px;
+	background-color: white;
+}
