@@ -19,7 +19,18 @@ public class Controller extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String action = request.getServletPath();
+		
+		switch(action) {
+		
+		case "/main":
+			listarContatos(request, response);
+			break;
+		}
 	}
-
+	
+	protected void listarContatos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+			
+		response.sendRedirect("pages/agenda.jsp");
+	}
 }
