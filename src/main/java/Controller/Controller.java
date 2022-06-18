@@ -1,13 +1,17 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Model.ContatoBean;
+
 import DAO.ImplContatoDAO;
+import Model.ContatoBean;
 
 @WebServlet(urlPatterns = {"/Controller", "/main", "/insertBD"})
 public class Controller extends HttpServlet {
@@ -38,7 +42,11 @@ public class Controller extends HttpServlet {
 	
 	protected void listarContatos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 			
-		response.sendRedirect("jsp/agenda.jsp");
+		ArrayList<ContatoBean> listaContatos = contatoDAO.retornaTodosContatos();
+
+		request.setAttribute("contatos", listaContatos);
+		RequestDispatcher rd = request.getRequestDispatcher("jsp/agenda.jsp");
+		rd.forward(request, response);
 	}
 	
 	protected void criarContato(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	

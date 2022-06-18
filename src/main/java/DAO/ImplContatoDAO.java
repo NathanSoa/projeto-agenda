@@ -36,7 +36,7 @@ public class ImplContatoDAO implements interfaceDAO {
 	
 	@Override
 	public ArrayList<ContatoBean> retornaTodosContatos() {
-		String sql = "SELECT * FROM contatos ORDER BY con_name";
+		String sql = "SELECT * FROM contatos ORDER BY con_nome";
 		Connection c = conecta.conectar();
 		ArrayList<ContatoBean> lista = new ArrayList<ContatoBean>();
 		
