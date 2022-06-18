@@ -12,6 +12,6 @@
 </head>
 <body>
 	<h1>Agenda de Contatos</h1>
-	<a href="" class="BotoesAcesso">Novo Contato</a>
+	<a href="../pages/novoContato.html" class="BotoesAcesso">Novo Contato</a>
 </body>
 </html>
