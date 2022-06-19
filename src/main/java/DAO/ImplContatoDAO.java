@@ -77,6 +77,25 @@ public class ImplContatoDAO implements interfaceDAO {
 		return contato;
 	}
 	
+	@Override
+	public void alteraContato(ContatoBean contato) {
+		String sql = "UPDATE contato SET con_nome = ?, con_email = ?, con_telefone = ? WHERE con_codigo = ?";
+		try {
+			Connection c = conecta.conectar();
+			PreparedStatement stmt = c.prepareStatement(sql);
+			
+			stmt.setString(1, contato.getNome());
+			stmt.setString(2, contato.getEmail());
+			stmt.setString(3, contato.getTelefone());
+			stmt.setInt(4, Integer.valueOf(contato.getCodigo()));
+			stmt.executeUpdate();
+			
+			conecta.encerrarConexaoBD(c, stmt);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private ContatoBean montaObjeto(ResultSet rs) throws SQLException {
 		
 		String codigo = String.valueOf(rs.getInt("con_codigo"));
