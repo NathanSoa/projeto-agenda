@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.ImplContatoDAO;
 import Model.ContatoBean;
 
-@WebServlet(urlPatterns = {"/Controller", "/main", "/insertBD", "/editarBD", "/update"})
+@WebServlet(urlPatterns = {"/Controller", "/main", "/insertBD", "/editarBD", "/update", "/delete"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -30,21 +30,25 @@ public class Controller extends HttpServlet {
 		
 		switch(action) {
 		
-		case "/main":
-			listarContatos(request, response);
-			break;
-			
-		case "/insertBD":
-			criarContato(request, response);
-			break;
-			
-		case "/editarBD":
-			editarContatos(request, response);
-			break;
-			
-		case "/update":
-			editarContatoBD(request, response);
-			break;
+			case "/main":
+				listarContatos(request, response);
+				break;
+				
+			case "/insertBD":
+				criarContato(request, response);
+				break;
+				
+			case "/editarBD":
+				editarContatos(request, response);
+				break;
+				
+			case "/update":
+				editarContatoBD(request, response);
+				break;
+				
+			case "/delete":
+				deletaContatoBD(request, response);
+				break;
 		}
 	}
 	
@@ -91,6 +95,15 @@ public class Controller extends HttpServlet {
 		contato.setEmail(request.getParameter("email"));
 		
 		contatoDAO.alteraContato(contato);
+		
+		response.sendRedirect("main");
+	}
+	
+protected void deletaContatoBD(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		
+		String codigo = request.getParameter("codigo");
+		
+		contatoDAO.deletaContato(codigo);
 		
 		response.sendRedirect("main");
 	}
