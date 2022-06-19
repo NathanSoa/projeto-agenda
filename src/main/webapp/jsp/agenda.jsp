@@ -26,7 +26,7 @@
 				<th>Nome</th>
 				<th>Telefone</th>
 				<th>E-mail</th>
-				<th>Opções</th>
+				<th colspan="2">Opções</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -37,9 +37,11 @@
 					<td><%=lista.get(i).getTelefone()%></td>
 					<td><%=lista.get(i).getEmail()%></td>
 					<td><a href="editarBD?con_codigo=<%=lista.get(i).getCodigo() %>" class="BotoesAcesso">Editar</a></td>
+					<td><a href="javascript: confirmar(<%=lista.get(i).getCodigo() %>);" class="BotoesAcesso" id="excluir">Excluir</a></td>
 				</tr>
 			<% } %>
 		</tbody>
 	</table>
+	<script src="scripts/confirmaExclusao.js"></script>
 </body>
 </html>
