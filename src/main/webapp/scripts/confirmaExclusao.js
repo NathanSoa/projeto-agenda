@@ -1,7 +1,7 @@
 function confirmar(codigo){
 	let resposta = confirm("Confirme a exclusão do contato")
 	
-	if (respoata === true){
+	if (resposta === true){
 		window.location.href="delete?codigo=" + codigo;
 	}
 }
