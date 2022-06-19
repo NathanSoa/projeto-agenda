@@ -26,6 +26,7 @@
 				<th>Nome</th>
 				<th>Telefone</th>
 				<th>E-mail</th>
+				<th>Opções</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -35,6 +36,7 @@
 					<td><%=lista.get(i).getNome()%></td>
 					<td><%=lista.get(i).getTelefone()%></td>
 					<td><%=lista.get(i).getEmail()%></td>
+					<td><a href="editarBD?con_codigo=<%=lista.get(i).getCodigo() %>" class="BotoesAcesso">Editar</a></td>
 				</tr>
 			<% } %>
 		</tbody>
