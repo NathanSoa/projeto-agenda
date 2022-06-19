@@ -79,7 +79,7 @@ public class ImplContatoDAO implements interfaceDAO {
 	
 	@Override
 	public void alteraContato(ContatoBean contato) {
-		String sql = "UPDATE contato SET con_nome = ?, con_email = ?, con_telefone = ? WHERE con_codigo = ?";
+		String sql = "UPDATE contatos SET con_nome = ?, con_email = ?, con_telefone = ? WHERE con_codigo = ?";
 		try {
 			Connection c = conecta.conectar();
 			PreparedStatement stmt = c.prepareStatement(sql);
