@@ -16,9 +16,9 @@ public class ImplContatoDAO implements interfaceDAO {
 	@Override
 	public void insereContato(ContatoBean contato) {
 		String sql = "INSERT INTO contatos(con_nome, con_email, con_telefone) VALUES (?, ?, ?);";
-		Connection c = conecta.conectar();
 		
 		try {
+			Connection c = conecta.conectar();
 			PreparedStatement stmt = c.prepareStatement(sql);
 			
 			stmt.setString(1, contato.getNome());
@@ -37,10 +37,10 @@ public class ImplContatoDAO implements interfaceDAO {
 	@Override
 	public ArrayList<ContatoBean> retornaTodosContatos() {
 		String sql = "SELECT * FROM contatos ORDER BY con_nome";
-		Connection c = conecta.conectar();
 		ArrayList<ContatoBean> lista = new ArrayList<ContatoBean>();
 		
 		try {
+			Connection c = conecta.conectar();
 			PreparedStatement stmt = c.prepareStatement(sql);		
 			ResultSet rs = stmt.executeQuery();
 			
@@ -55,6 +55,26 @@ public class ImplContatoDAO implements interfaceDAO {
 		}
 		
 		return lista;
+	}
+	
+	@Override
+	public ContatoBean buscaContatoPorCodigo(String codigo) {
+		String sql = "SELECT * FROM contatos WHERE con_codigo = ?";
+		ContatoBean contato = null;
+		try {
+			Connection c = conecta.conectar();
+			PreparedStatement stmt = c.prepareStatement(sql);
+			stmt.setString(1, codigo);
+			ResultSet rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				contato = montaObjeto(rs);
+			}
+			conecta.encerrarConexaoBD(c, stmt, rs);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return contato;
 	}
 	
 	private ContatoBean montaObjeto(ResultSet rs) throws SQLException {
