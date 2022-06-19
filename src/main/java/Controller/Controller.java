@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.ImplContatoDAO;
 import Model.ContatoBean;
 
-@WebServlet(urlPatterns = {"/Controller", "/main", "/insertBD", "/editarBD"})
+@WebServlet(urlPatterns = {"/Controller", "/main", "/insertBD", "/editarBD", "/update"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -40,6 +40,10 @@ public class Controller extends HttpServlet {
 			
 		case "/editarBD":
 			editarContatos(request, response);
+			break;
+			
+		case "/update":
+			editarContatoBD(request, response);
 			break;
 		}
 	}
@@ -77,5 +81,17 @@ public class Controller extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("jsp/editar.jsp");
 		rd.forward(request, response);
+	}
+	
+	protected void editarContatoBD(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		
+		contato.setCodigo(request.getParameter("codigo"));
+		contato.setNome(request.getParameter("nome"));
+		contato.setTelefone(request.getParameter("telefone"));
+		contato.setEmail(request.getParameter("email"));
+		
+		contatoDAO.alteraContato(contato);
+		
+		response.sendRedirect("main");
 	}
 }
