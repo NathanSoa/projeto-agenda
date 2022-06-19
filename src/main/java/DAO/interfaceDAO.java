@@ -13,4 +13,6 @@ public interface interfaceDAO {
 	ContatoBean buscaContatoPorCodigo(String codigo);
 	
 	void alteraContato(ContatoBean contato);
+	
+	void deletaContato(String codigo);
 }

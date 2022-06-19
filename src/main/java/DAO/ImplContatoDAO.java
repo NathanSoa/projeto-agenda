@@ -96,6 +96,23 @@ public class ImplContatoDAO implements interfaceDAO {
 		}
 	}
 	
+	@Override
+	public void deletaContato(String codigo) {
+		String sql = "DELETE FROM contatos WHERE con_codigo = ?";
+		
+		try {
+			Connection c = conecta.conectar();
+			PreparedStatement stmt = c.prepareStatement(sql);
+			stmt.setInt(1, Integer.valueOf(codigo));	
+			stmt.executeUpdate();
+			
+			conecta.encerrarConexaoBD(c, stmt);
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private ContatoBean montaObjeto(ResultSet rs) throws SQLException {
 		
 		String codigo = String.valueOf(rs.getInt("con_codigo"));
